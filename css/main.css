@@ -883,12 +883,7 @@ h6 {
       background-color: rgba(0, 0, 0, 0.5); }
       .service-section .section-flex .item:hover {
         padding-bottom: 220px; }
-      .service-section .section-flex .item:nth-child(2n+2) {
-        background-color: rgba(144, 149, 144, 0.5); }
-      .service-section .section-flex .item:nth-child(3n+3) {
-        background-color: rgba(144, 149, 144, 0.5); }
-      .service-section .section-flex .item:nth-child(4n+4) {
-        background-color: rgba(0, 0, 0, 0.5); }
+
       .service-section .section-flex .item .wrap {
         height: 200%;
         width: 100%;

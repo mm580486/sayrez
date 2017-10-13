@@ -47,6 +47,22 @@
 /* 1 Google fonts */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,800,900|Open+Sans:300,400,600,700,800");
 /* 2 Main Colors */
+@font-face {
+  font-family: 'sayrez';
+  src:  url('../fonts/sayrez.woff') format('woff2'),
+        url('../fonts/sayrez.ttf') format('tts');
+}
+
+p,h1,h2,h3,h4,h5,h6,div,li,a{
+  font-family: 'sayrez',sayrez !important;
+ 
+}
+
+section div, section p{
+  text-align:right !important;
+  direction: rtl !important;
+}
+
 .white {
   color: #fff; }
 

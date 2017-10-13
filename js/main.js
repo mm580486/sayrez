@@ -327,16 +327,16 @@
         function initMap() {
             var map = new google.maps.Map(mapElem, {
                 zoom: 12,
-                center: new google.maps.LatLng(48.922633,24.711116999999998),
+                center: new google.maps.LatLng(35.700263, 51.366646),
                 scrollwheel: false,
             });
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(48.922633, 24.711116999999998),
+                position: new google.maps.LatLng(35.700263, 51.366646),
                 map: map,
                 icon: "img/pin.png"
             });
             var infowindow = new google.maps.InfoWindow({
-                content: 'Your Address'
+                content: 'سایرز'
             });
             google.maps.event.addListener(marker, 'click', function () {
                 infowindow.open(map, marker);

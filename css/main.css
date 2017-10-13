@@ -63,6 +63,10 @@ section div, section p{
   direction: rtl !important;
 }
 
+.team-slider *{
+  direction: ltr !important;
+}
+
 .white {
   color: #fff; }
 
@@ -432,7 +436,8 @@ h6 {
       display: flex;
       align-items: center; }
   .menu-flex .menu {
-    display: flex;
+    display: -webkit-inline-box;
+    margin-right:10px;
     height: 100%;
     align-items: center; }
     .menu-flex .menu li {
@@ -821,7 +826,13 @@ h6 {
       background: #1CA6F6;
       left: 0;
       right: 0;
-      margin: auto; }
+      margin: auto; 
+    margin-top:10px;
+    transition:0.3s all;
+    }
+    .section h3:hover:after{
+      width: 101px;
+    }
     .section h3.left {
       text-align: left; }
       .section h3.left:after {

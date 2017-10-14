@@ -192,14 +192,14 @@
             
                 <div class="section contacts" dir='rtl'>
                     <div class="container">
-                        <h3>فرم تماس با ما</h3>
+                        <h3 id="section_title">فرم تماس با ما</h3>
                         <div class="col-md-12 contact-box">
                             <form action="contact.php" class="form-contact">
                                 <div class="form-flex">
                                     <input type="text" placeholder="نام و نام خانوادگی" name="name" required>
                                     <input type="email" placeholder="ایمیل" name="email" required>
                                     <input type="text" placeholder="شماره تماس" name="phone" required>
-                                    <input type="text" placeholder="عنوان پیام" name="title" required>
+                                    <input type="text" placeholder="عنوان پیام" name="title" id='title' required>
                                 </div>
                                 <textarea placeholder="متن پیام" name="message" required></textarea>
                                 <button type="submit" class="btn-rect">ارسال پیام</button>
@@ -248,5 +248,21 @@
 <script src="js/parallax.min.js"></script>
 <script src=js/main.js></script>
 
+
+<script>
+    $(document).ready(function(){
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results[1] || 0;
+        }
+        var title=$.urlParam('title');
+
+        if(title){
+$('#title').val(decodeURIComponent(title));
+$('#section_title').html('فرم ثبت سفارش');
+        }
+
+    })
+</script>
 </body>
 </html>

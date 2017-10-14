@@ -57,7 +57,9 @@ p,h1,h2,h3,h4,h5,h6,div,li,a,input,button,textarea{
   font-family: 'sayrez',sayrez !important;
  
 }
-
+.menu-flex .logo a{
+  display:block !important;
+}
 section div, section p{
   text-align:right !important;
   direction: rtl !important;

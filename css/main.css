@@ -60,6 +60,9 @@ p,h1,h2,h3,h4,h5,h6,div,li,a,input,button,textarea{
 .owl-carousel,.owl-carousel *{
   direction: ltr !important;
 }
+.news-grid img{
+  height: 190px !important;
+}
 .menu-flex .logo a{
   display:block !important;
 }

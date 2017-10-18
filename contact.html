@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    
     <!-- FAVICON -->
     <link rel=icon type=image/vnd.microsoft.icon href=img/favicon.ico>
     <link rel="SHORTCUT ICON" type=image/x-icon href=img/favicon.ico>
@@ -195,15 +197,31 @@
                     <div class="container">
                         <h3 id="section_title">فرم تماس با ما</h3>
                         <div class="col-md-12 contact-box">
-                            <form action="contact.php" class="form-contact">
-                                <div class="form-flex">
-                                    <input type="text" placeholder="نام و نام خانوادگی" name="name" required>
-                                    <input type="email" placeholder="ایمیل" name="email" required>
-                                    <input type="text" placeholder="شماره تماس" name="phone" required>
-                                    <input type="text" placeholder="عنوان پیام" name="title" id='title' required>
+
+                                <div class="alert alert-success alert-dismissible" id="success_message" style="display:none;" role="alert">
+                                     
+                                        پیام شما دریافت شد در اسرع وقت کارشناسان ما با شما تماس خواهند گرفت
+                                      </div>
+
+
+                            <form action="contact.php" id="contact__form" class="form-contact">
+                                <div class="col-xs-6">
+                                    <input type="text" placeholder="نام و نام خانوادگی" name="name" id="name" required>
                                 </div>
-                                <textarea placeholder="متن پیام" name="message" required></textarea>
-                                <button type="submit" class="btn-rect">ارسال پیام</button>
+                                <div class="col-xs-6">   
+                                <input type="email" placeholder="ایمیل" name="email" id="email" required>
+                                </div>
+                                <div class="col-xs-6"> 
+                                <input type="text" placeholder="شماره تماس" name="phone" id='phone' required>
+                                </div>    
+                                <div class="col-xs-6">
+                                <input type="text" placeholder="عنوان پیام" name="title" id='title' required>
+                                </div>
+                                <div class="col-xs-12">
+                                <textarea placeholder="متن پیام" name="message" id='message' required></textarea>
+                                
+                                <button type="submit" id="submit__form__button" class="btn-rect">ارسال پیام</button>
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -235,6 +253,16 @@
         </div>
     </div>
 </footer>
+
+<style>
+    label.error {
+        background: url(images/unchecked.gif) no-repeat;
+        padding-left: 16px;
+        margin-left: .3em;
+        position: relative !important;
+        top: -46px !important;
+    }
+</style>
 
 
 <!-- JAVASCRIPT -->
@@ -272,6 +300,57 @@ $('#section_title').html('فرم ثبت سفارش');
 var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
 <!-- {/literal} END JIVOSITE CODE -->
 
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+
+    jQuery.extend(jQuery.validator.messages, {
+        required: "پر کردن این فیلد الزامی است",
+        remote: "Please fix this field.",
+        email: "ایمیل وارد شده معتبر نمیباشد",
+        url: "Please enter a valid URL.",
+        date: "Please enter a valid date.",
+        dateISO: "Please enter a valid date (ISO).",
+        number: "Please enter a valid number.",
+        digits: "Please enter only digits.",
+        creditcard: "Please enter a valid credit card number.",
+        equalTo: "Please enter the same value again.",
+        accept: "Please enter a value with a valid extension.",
+        maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+        minlength: jQuery.validator.format("Please enter at least {0} characters."),
+        rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+        range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+        max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+        min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+    });
+
+   (function(){
+      emailjs.init("user_fpLyL20IdfsPi83x50nqx");
+   })();
+
+   $(document).ready(function(){
+        $('#submit__form__button').click(function(e){
+            e.preventDefault();
+            var form = $( "#contact__form" );
+            form.validate();
+
+            if(!form.valid()){
+
+                return
+            }
+            emailjs.send("gmail","template_RzbZYFFn",{email: $('#email').val(),subject: $('#title').val(),name: $('#name').val(),phone: $('#phone').val(), notes: $('#message').val()})
+                .then(function(response) {
+                    $( "#contact__form" ).slideUp();
+                    $( '#success_message' ).slideDown();
+                   console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+                }, function(err) {
+                   console.log("FAILED. error=", err);
+                });
+
+        });
+   });
+</script>
 
 </body>
 </html>

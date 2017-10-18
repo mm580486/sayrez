@@ -1466,7 +1466,7 @@ h6 {
       justify-content: space-between;
       flex-wrap: wrap; }
     .contacts .contact-box input {
-      width: 100%;
+      width: 99.9%;
       height: 40px;
       line-height: 40px;
       font-size: 16px;

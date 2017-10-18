@@ -96,9 +96,14 @@
   .sidebar-wrap {
     padding: 0 !important; }
   .blog-masonry > div {
-    padding: 0; } }
+    padding: 0; } 
+    .menu-flex .menu li{
+      display: inline-flex !important;
+    }
+  }
 
 @media (max-width: 340px) {
+
   .portfolio-section .portfolio-grid .portfolio-item {
     ght: auto; }
     .portfolio-section .portfolio-grid .portfolio-item .title {
